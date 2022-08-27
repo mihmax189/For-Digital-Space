@@ -70,7 +70,7 @@ namespace TestTask
 
         private static void calcAndShowInfo(List<Person> list)
         {
-            int countPeople = 0, countCards = 0;
+            int countPeople = 0, countCards = 0, countChildren = 0;
             double averageAgeChild = 0.0;
 
             foreach (Person person in list)
@@ -80,13 +80,14 @@ namespace TestTask
 
                 foreach (Child child in person.Children)
                     averageAgeChild += childAge(child.BirthDate);
-                averageAgeChild /= person.Children.Length;
+
+                countChildren += person.Children.Length;
             }
 
             Console.WriteLine("******** INFORMATION ********");
             Console.WriteLine("Count of people: {0}", countPeople);
             Console.WriteLine("Count of cards: {0}", countCards);
-            Console.WriteLine("Average age of children: {0}", averageAgeChild);
+            Console.WriteLine("Average age of children: {0}", averageAgeChild / countChildren);
         }
     }
 }
